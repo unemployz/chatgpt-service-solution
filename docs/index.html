@@ -417,3 +417,125 @@
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 700;
     font-size: 32px;
+    line-height: 40px;
+    padding-bottom: 14px;
+    margin: 0 0 20px 0;
+    padding: 0;
+  }
+  
+  #apidoc h2 {
+    font-family: "Source Sans Pro Bold", sans-serif;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 26px;
+    padding-top: 14px;
+  }
+  
+  /* ------------------------------------------------------------------------------------------
+   * pre / code
+   * ------------------------------------------------------------------------------------------ */
+  pre {
+    background-color: #292b36;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 6px;
+    position: relative;
+    margin: 10px 0 20px 0;
+  }
+  
+  code.language-text {
+    word-wrap: break-word;
+  }
+  
+  pre.language-json {
+    overflow: auto;
+  }
+  
+  pre.language-html {
+    margin: 40px 0 20px 0;
+  }
+  
+  pre.language-html:before {
+    content: attr(data-type);
+    position: absolute;
+    top: -30px;
+    left: 0;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    display: inline-block;
+    padding: 2px 5px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    background-color: #3387CC;
+    color: #ffffff;
+  }
+  
+  pre.language-html[data-type="get"]:before {
+    background-color: green;
+  }
+  
+  pre.language-html[data-type="put"]:before {
+    background-color: #e5c500;
+  }
+  
+  pre.language-html[data-type="post"]:before {
+    background-color: #4070ec;
+  }
+  
+  pre.language-html[data-type="delete"]:before {
+    background-color: #ed0039;
+  }
+  
+  pre.language-api .str {
+    color: #ffffff;
+  }
+  
+  pre.language-api .pln,
+  pre.language-api .pun {
+    color: #65B042;
+  }
+  
+  pre code {
+    display: block;
+    font-size: 14px;
+    font-family: "Source Code Pro", monospace;
+    font-style: normal;
+    font-weight: 400;
+  }
+  
+  pre code.sample-request-response-json {
+    white-space: pre-wrap;
+    max-height: 500px;
+    overflow: auto;
+  }
+  
+  /* ------------------------------------------------------------------------------------------
+   * Sidenav
+   * ------------------------------------------------------------------------------------------ */
+  .sidenav {
+    width: 228px;
+    margin: 0;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-color: #f5f5f5;
+    z-index: 10;
+  }
+  
+  .sidenav > li > a {
+    display: block;
+    width: 192px;
+    margin: 0;
+    padding: 2px 11px;
+    border: 0;
+    border-left: transparent 4px solid;
+    border-right: transparent 4px solid;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+  }
