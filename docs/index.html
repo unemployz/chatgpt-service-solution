@@ -894,3 +894,106 @@ public class DefaultApiExample {
     public static void main(String[] args) {
         DefaultApi apiInstance = new DefaultApi();
         Chat_id_body body = ; // Chat_id_body | 
+        String id = id_example; // String | Unique identifier for the session
+        try {
+            inline_response_200_3 result = apiInstance.apiChatIdPost(body, id);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DefaultApi#apiChatIdPost");
+            e.printStackTrace();
+        }
+    }
+}</code></pre>
+                          </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-apiChatIdPost-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-apiChatIdPost-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">Chat_id_body *body = ; // 
+String *id = id_example; // Unique identifier for the session
+
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Send a message in an existing session
+[apiInstance apiChatIdPostWith:body
+    id:id
+              completionHandler: ^(inline_response_200_3 output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiChatIdPost-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ChatApi = require('chat_api');
+
+var api = new ChatApi.DefaultApi()
+var body = ; // {{Chat_id_body}} 
+var id = id_example; // {{String}} Unique identifier for the session
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.apiChatIdPost(bodyid, callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-apiChatIdPost-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-apiChatIdPost-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class apiChatIdPostExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+            var body = new Chat_id_body(); // Chat_id_body | 
+            var id = id_example;  // String | Unique identifier for the session
+
+            try
+            {
+                // Send a message in an existing session
+                inline_response_200_3 result = apiInstance.apiChatIdPost(body, id);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.apiChatIdPost: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiChatIdPost-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+$body = ; // Chat_id_body | 
+$id = id_example; // String | Unique identifier for the session
+
+try {
+    $result = $api_instance->apiChatIdPost($body, $id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->apiChatIdPost: ', $e->getMessage(), PHP_EOL;
