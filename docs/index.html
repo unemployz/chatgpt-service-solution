@@ -1560,3 +1560,128 @@ public class DefaultApiExample {
     }
 }</code></pre>
                           </div>
+  <!--
+  <div class="tab-pane" id="examples-Default-apiHistoryGet-0-groovy">
+  <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+  </div> -->
+                            <div class="tab-pane" id="examples-Default-apiHistoryGet-0-objc">
+                              <pre class="prettyprint"><code class="language-cpp">
+DefaultApi *apiInstance = [[DefaultApi alloc] init];
+
+// Fetch a list of sessions
+[apiInstance apiHistoryGetWithCompletionHandler: 
+              ^(array[inline_response_200] output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiHistoryGet-0-javascript">
+                              <pre class="prettyprint"><code class="language-js">var ChatApi = require('chat_api');
+
+var api = new ChatApi.DefaultApi()
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.apiHistoryGet(callback);
+</code></pre>
+                            </div>
+
+                            <!--<div class="tab-pane" id="examples-Default-apiHistoryGet-0-angular">
+              <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+            </div>-->
+                            <div class="tab-pane" id="examples-Default-apiHistoryGet-0-csharp">
+                              <pre class="prettyprint"><code class="language-cs">using System;
+using System.Diagnostics;
+using IO.Swagger.Api;
+using IO.Swagger.Client;
+using IO.Swagger.Model;
+
+namespace Example
+{
+    public class apiHistoryGetExample
+    {
+        public void main()
+        {
+
+            var apiInstance = new DefaultApi();
+
+            try
+            {
+                // Fetch a list of sessions
+                array[inline_response_200] result = apiInstance.apiHistoryGet();
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling DefaultApi.apiHistoryGet: " + e.Message );
+            }
+        }
+    }
+}
+</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiHistoryGet-0-php">
+                              <pre class="prettyprint"><code class="language-php"><&#63;php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new Swagger\Client\ApiDefaultApi();
+
+try {
+    $result = $api_instance->apiHistoryGet();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DefaultApi->apiHistoryGet: ', $e->getMessage(), PHP_EOL;
+}
+?></code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiHistoryGet-0-perl">
+                              <pre class="prettyprint"><code class="language-perl">use Data::Dumper;
+use WWW::SwaggerClient::Configuration;
+use WWW::SwaggerClient::DefaultApi;
+
+my $api_instance = WWW::SwaggerClient::DefaultApi->new();
+
+eval { 
+    my $result = $api_instance->apiHistoryGet();
+    print Dumper($result);
+};
+if ($@) {
+    warn "Exception when calling DefaultApi->apiHistoryGet: $@\n";
+}</code></pre>
+                            </div>
+
+                            <div class="tab-pane" id="examples-Default-apiHistoryGet-0-python">
+                              <pre class="prettyprint"><code class="language-python">from __future__ import print_statement
+import time
+import swagger_client
+from swagger_client.rest import ApiException
+from pprint import pprint
+
+# create an instance of the API class
+api_instance = swagger_client.DefaultApi()
+
+try: 
+    # Fetch a list of sessions
+    api_response = api_instance.api_history_get()
+    pprint(api_response)
+except ApiException as e:
+    print("Exception when calling DefaultApi->apiHistoryGet: %s\n" % e)</code></pre>
+                            </div>
+                          </div>
+
+                          <h2>Parameters</h2>
+
+
+
