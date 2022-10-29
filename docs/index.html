@@ -1685,3 +1685,116 @@ except ApiException as e:
 
 
 
+
+
+
+                          <h2>Responses</h2>
+                            <h3> Status: 200 - Successful response </h3>
+
+                            <ul class="nav nav-tabs nav-tabs-examples" >
+                                <li class="active">
+                                  <a data-toggle="tab" href="#responses-apiHistoryGet-200-schema">Schema</a>
+                                </li>
+
+                            </ul>
+
+                            <div class="tab-content" style='margin-bottom: 10px;'>
+                                <div class="tab-pane active" id="responses-apiHistoryGet-200-schema">
+                                  <div id='responses-apiHistoryGet-200-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+                                    <script>
+                                      $(document).ready(function() {
+                                        var schemaWrapper = {
+  "description" : "Successful response",
+  "content" : {
+    "application/json" : {
+      "schema" : {
+        "type" : "array",
+        "items" : {
+          "$ref" : "#/components/schemas/inline_response_200"
+        },
+        "x-content-type" : "application/json"
+      }
+    }
+  }
+};
+                                        var schema = schemaWrapper.content["application/json"].schema;
+                                        if (schema.$ref != null) {
+                                          schema = defsParser.$refs.get(schema.$ref);
+                                        } else {
+                                          schemaWrapper.components = {};
+                                          schemaWrapper.components.schemas = Object.assign({}, defs);
+                                          $RefParser.dereference(schemaWrapper).catch(function(err) {
+                                            console.log(err);
+                                          });
+                                        }
+
+                                        //console.log(JSON.stringify(schema));
+                                        var view = new JSONSchemaView(schema, 3);
+                                        $('#responses-apiHistoryGet-200-schema-data').val(stringify(schema));
+                                        var result = $('#responses-apiHistoryGet-200-schema-200');
+                                        result.empty();
+                                        result.append(view.render());
+                                      });
+                                    </script>
+                                  </div>
+                                  <input id='responses-apiHistoryGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                    <div id="api-Default-apiHistoryIdGet">
+                      <article id="api-Default-apiHistoryIdGet-0" data-group="User" data-name="apiHistoryIdGet" data-version="0">
+                        <div class="pull-left">
+                          <h1>apiHistoryIdGet</h1>
+                          <p>Fetch conversation history for a particular session</p>
+                        </div>
+                        <div class="pull-right"></div>
+                        <div class="clearfix"></div>
+                        <p></p>
+                        <p class="marked">Returns a session object</p>
+                        <p></p>
+                        <br />
+                        <pre class="prettyprint language-html prettyprinted" data-type="get"><code><span class="pln">/api/history/{id}</span></code></pre>
+                        <p>
+                          <h3>Usage and SDK Samples</h3>
+                        </p>
+                        <ul class="nav nav-tabs nav-tabs-examples">
+                          <li class="active"><a href="#examples-Default-apiHistoryIdGet-0-curl">Curl</a></li>
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-java">Java</a></li>
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-android">Android</a></li>
+                          <!--<li class=""><a href="#examples-Default-apiHistoryIdGet-0-groovy">Groovy</a></li>-->
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-objc">Obj-C</a></li>
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-javascript">JavaScript</a></li>
+                          <!--<li class=""><a href="#examples-Default-apiHistoryIdGet-0-angular">Angular</a></li>-->
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-csharp">C#</a></li>
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-php">PHP</a></li>
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-perl">Perl</a></li>
+                          <li class=""><a href="#examples-Default-apiHistoryIdGet-0-python">Python</a></li>
+                        </ul>
+
+                        <div class="tab-content">
+                          <div class="tab-pane active" id="examples-Default-apiHistoryIdGet-0-curl">
+                           <pre class="prettyprint"><code class="language-bsh">curl -X GET\
+-H "Accept: application/json"\
+"//api/history/{id}"</code></pre>
+                          </div>
+                          <div class="tab-pane" id="examples-Default-apiHistoryIdGet-0-java">
+                            <pre class="prettyprint"><code class="language-java">import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import io.swagger.client.api.DefaultApi;
+
+import java.io.File;
+import java.util.*;
+
+public class DefaultApiExample {
+
+    public static void main(String[] args) {
+        
+        DefaultApi apiInstance = new DefaultApi();
+        String id = id_example; // String | Unique identifier for the session
+        try {
+            inline_response_200_1 result = apiInstance.apiHistoryIdGet(id);
+            System.out.println(result);
