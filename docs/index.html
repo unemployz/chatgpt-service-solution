@@ -2034,3 +2034,95 @@ except ApiException as e:
                                     </script>
                                   </div>
                                   <input id='responses-apiHistoryIdGet-200-schema-data' type='hidden' value=''></input>
+                                </div>
+                            </div>
+
+                        </article>
+                      </div>
+                      <hr>
+                  </section>
+          </div>
+          <div id="footer">
+            <div id="api-_footer">
+              <p>Suggestions, contact, support and error reporting;
+                  <div class="app-desc">Information URL: <a href="https://helloreverb.com">https://helloreverb.com</a></div>
+                  <div class="app-desc">Contact Info: <a href="hello@helloreverb.com">hello@helloreverb.com</a></div>
+              </p>
+                <div class="license-info">All rights reserved</div>
+                <div class="license-url">http://apache.org/licenses/LICENSE-2.0.html</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function webpackUniversalModuleDefinition(root, factory) {
+  	if(typeof exports === 'object' && typeof module === 'object')
+  		module.exports = factory();
+  	else if(typeof define === 'function' && define.amd)
+  		define("JSONFormatter", [], factory);
+  	else if(typeof exports === 'object')
+  		exports["JSONFormatter"] = factory();
+  	else
+  		root["JSONFormatter"] = factory();
+  })(this, function() {
+  return /******/ (function(modules) { // webpackBootstrap
+  /******/ 	// The module cache
+  /******/ 	var installedModules = {};
+  /******/
+  /******/ 	// The require function
+  /******/ 	function __webpack_require__(moduleId) {
+  /******/
+  /******/ 		// Check if module is in cache
+  /******/ 		if(installedModules[moduleId])
+  /******/ 			return installedModules[moduleId].exports;
+  /******/
+  /******/ 		// Create a new module (and put it into the cache)
+  /******/ 		var module = installedModules[moduleId] = {
+  /******/ 			exports: {},
+  /******/ 			id: moduleId,
+  /******/ 			loaded: false
+  /******/ 		};
+  /******/
+  /******/ 		// Execute the module function
+  /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+  /******/
+  /******/ 		// Flag the module as loaded
+  /******/ 		module.loaded = true;
+  /******/
+  /******/ 		// Return the exports of the module
+  /******/ 		return module.exports;
+  /******/ 	}
+  /******/
+  /******/
+  /******/ 	// expose the modules object (__webpack_modules__)
+  /******/ 	__webpack_require__.m = modules;
+  /******/
+  /******/ 	// expose the module cache
+  /******/ 	__webpack_require__.c = installedModules;
+  /******/
+  /******/ 	// __webpack_public_path__
+  /******/ 	__webpack_require__.p = "dist";
+  /******/
+  /******/ 	// Load entry module and return exports
+  /******/ 	return __webpack_require__(0);
+  /******/ })
+  /************************************************************************/
+  /******/ ([
+  /* 0 */
+  /***/ function(module, exports, __webpack_require__) {
+  
+  	module.exports = __webpack_require__(1);
+  
+  
+  /***/ },
+  /* 1 */
+  /***/ function(module, exports, __webpack_require__) {
+  
+  	"use strict";
+  	__webpack_require__(2);
+  	var helpers_ts_1 = __webpack_require__(6);
+  	var DATE_STRING_REGEX = /(^\d{1,4}[\.|\\/|-]\d{1,2}[\.|\\/|-]\d{1,4})(\s*(?:0?[1-9]:[0-5]|1(?=[012])\d:[0-5])\d\s*[ap]m)?$/;
+  	var PARTIAL_DATE_REGEX = /\d{2}:\d{2}:\d{2} GMT-\d{4}/;
+  	var JSON_DATE_REGEX = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/;
+  	// When toggleing, don't animated removal or addition of more than a few items
