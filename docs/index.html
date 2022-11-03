@@ -2359,3 +2359,125 @@ except ApiException as e:
   	        }
   	    };
   	    /**
+  	     * Generates inline preview
+  	     *
+  	     * @returns {string}
+  	    */
+  	    JSONFormatter.prototype.getInlinepreview = function () {
+  	        var _this = this;
+  	        if (this.isArray) {
+  	            // if array length is greater then 100 it shows "Array[101]"
+  	            if (this.json.length > this.config.hoverPreviewArrayCount) {
+  	                return "Array[" + this.json.length + "]";
+  	            }
+  	            else {
+  	                return "[" + this.json.map(helpers_ts_1.getPreview).join(', ') + "]";
+  	            }
+  	        }
+  	        else {
+  	            var keys = this.keys;
+  	            // the first five keys (like Chrome Developer Tool)
+  	            var narrowKeys = keys.slice(0, this.config.hoverPreviewFieldCount);
+  	            // json value schematic information
+  	            var kvs = narrowKeys.map(function (key) { return (key + ":" + helpers_ts_1.getPreview(_this.json[key])); });
+  	            // if keys count greater then 5 then show ellipsis
+  	            var ellipsis = keys.length >= this.config.hoverPreviewFieldCount ? '…' : '';
+  	            return "{" + kvs.join(', ') + ellipsis + "}";
+  	        }
+  	    };
+  	    /**
+  	     * Renders an HTML element and installs event listeners
+  	     *
+  	     * @returns {HTMLDivElement}
+  	    */
+  	    JSONFormatter.prototype.render = function () {
+  	        // construct the root element and assign it to this.element
+  	        this.element = helpers_ts_1.createElement('div', 'row');
+  	        // construct the toggler link
+  	        var togglerLink = helpers_ts_1.createElement('a', 'toggler-link');
+  	        // if this is an object we need a wrapper span (toggler)
+  	        if (this.isObject) {
+  	            togglerLink.appendChild(helpers_ts_1.createElement('span', 'toggler'));
+  	        }
+  	        // if this is child of a parent formatter we need to append the key
+  	        if (this.hasKey) {
+  	            togglerLink.appendChild(helpers_ts_1.createElement('span', 'key', this.key + ":"));
+  	        }
+  	        // Value for objects and arrays
+  	        if (this.isObject) {
+  	            // construct the value holder element
+  	            var value = helpers_ts_1.createElement('span', 'value');
+  	            // we need a wrapper span for objects
+  	            var objectWrapperSpan = helpers_ts_1.createElement('span');
+  	            // get constructor name and append it to wrapper span
+  	            var constructorName = helpers_ts_1.createElement('span', 'constructor-name', this.constructorName);
+  	            objectWrapperSpan.appendChild(constructorName);
+  	            // if it's an array append the array specific elements like brackets and length
+  	            if (this.isArray) {
+  	                var arrayWrapperSpan = helpers_ts_1.createElement('span');
+  	                arrayWrapperSpan.appendChild(helpers_ts_1.createElement('span', 'bracket', '['));
+  	                arrayWrapperSpan.appendChild(helpers_ts_1.createElement('span', 'number', (this.json.length)));
+  	                arrayWrapperSpan.appendChild(helpers_ts_1.createElement('span', 'bracket', ']'));
+  	                objectWrapperSpan.appendChild(arrayWrapperSpan);
+  	            }
+  	            // append object wrapper span to toggler link
+  	            value.appendChild(objectWrapperSpan);
+  	            togglerLink.appendChild(value);
+  	        }
+  	        else {
+  	            // make a value holder element
+  	            var value = this.isUrl ? helpers_ts_1.createElement('a') : helpers_ts_1.createElement('span');
+  	            // add type and other type related CSS classes
+  	            value.classList.add(helpers_ts_1.cssClass(this.type));
+  	            if (this.isDate) {
+  	                value.classList.add(helpers_ts_1.cssClass('date'));
+  	            }
+  	            if (this.isUrl) {
+  	                value.classList.add(helpers_ts_1.cssClass('url'));
+  	                value.setAttribute('href', this.json);
+  	            }
+  	            // Append value content to value element
+  	            var valuePreview = helpers_ts_1.getValuePreview(this.json, this.json);
+  	            value.appendChild(document.createTextNode(valuePreview));
+  	            // append the value element to toggler link
+  	            togglerLink.appendChild(value);
+  	        }
+  	        // if hover preview is enabled, append the inline preview element
+  	        if (this.isObject && this.config.hoverPreviewEnabled) {
+  	            var preview = helpers_ts_1.createElement('span', 'preview-text');
+  	            preview.appendChild(document.createTextNode(this.getInlinepreview()));
+  	            togglerLink.appendChild(preview);
+  	        }
+  	        // construct a children element
+  	        var children = helpers_ts_1.createElement('div', 'children');
+  	        // set CSS classes for children
+  	        if (this.isObject) {
+  	            children.classList.add(helpers_ts_1.cssClass('object'));
+  	        }
+  	        if (this.isArray) {
+  	            children.classList.add(helpers_ts_1.cssClass('array'));
+  	        }
+  	        if (this.isEmpty) {
+  	            children.classList.add(helpers_ts_1.cssClass('empty'));
+  	        }
+  	        // set CSS classes for root element
+  	        if (this.config && this.config.theme) {
+  	            this.element.classList.add(helpers_ts_1.cssClass(this.config.theme));
+  	        }
+  	        if (this.isOpen) {
+  	            this.element.classList.add(helpers_ts_1.cssClass('open'));
+  	        }
+  	        // append toggler and children elements to root element
+  	        this.element.appendChild(togglerLink);
+  	        this.element.appendChild(children);
+  	        // if formatter is set to be open call appendChildren
+  	        if (this.isObject && this.isOpen) {
+  	            this.appendChildren();
+  	        }
+  	        // add event listener for toggling
+  	        if (this.isObject) {
+  	            togglerLink.addEventListener('click', this.toggleOpen.bind(this));
+  	        }
+  	        return this.element;
+  	    };
+  	    /**
