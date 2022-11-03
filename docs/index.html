@@ -2126,3 +2126,125 @@ except ApiException as e:
   	var PARTIAL_DATE_REGEX = /\d{2}:\d{2}:\d{2} GMT-\d{4}/;
   	var JSON_DATE_REGEX = /\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d{3}Z/;
   	// When toggleing, don't animated removal or addition of more than a few items
+  	var MAX_ANIMATED_TOGGLE_ITEMS = 10;
+  	var requestAnimationFrame = window.requestAnimationFrame || function (cb) { cb(); return 0; };
+  	;
+  	var _defaultConfig = {
+  	    hoverPreviewEnabled: false,
+  	    hoverPreviewArrayCount: 100,
+  	    hoverPreviewFieldCount: 5,
+  	    animateOpen: true,
+  	    animateClose: true,
+  	    theme: null
+  	};
+  	module.exports = (function () {
+  	    /**
+  	     * @param {object} json The JSON object you want to render. It has to be an
+  	     * object or array. Do NOT pass raw JSON string.
+  	     *
+  	     * @param {number} [open=1] his number indicates up to how many levels the
+  	     * rendered tree should expand. Set it to `0` to make the whole tree collapsed
+  	     * or set it to `Infinity` to expand the tree deeply
+  	     *
+  	     * @param {object} [config=defaultConfig] -
+  	     *  defaultConfig = {
+  	     *   hoverPreviewEnabled: false,
+  	     *   hoverPreviewArrayCount: 100,
+  	     *   hoverPreviewFieldCount: 5
+  	     * }
+  	     *
+  	     * Available configurations:
+  	     *  #####Hover Preview
+  	     * * `hoverPreviewEnabled`:  enable preview on hover
+  	     * * `hoverPreviewArrayCount`: number of array items to show in preview Any
+  	     *    array larger than this number will be shown as `Array[XXX]` where `XXX`
+  	     *    is length of the array.
+  	     * * `hoverPreviewFieldCount`: number of object properties to show for object
+  	     *   preview. Any object with more properties that thin number will be
+  	     *   truncated.
+  	     *
+  	     * @param {string} [key=undefined] The key that this object in it's parent
+  	     * context
+  	    */
+  	    function JSONFormatter(json, open, config, key) {
+  	        if (open === void 0) { open = 1; }
+  	        if (config === void 0) { config = _defaultConfig; }
+  	        this.json = json;
+  	        this.open = open;
+  	        this.config = config;
+  	        this.key = key;
+  	        // Hold the open state after the toggler is used
+  	        this._isOpen = null;
+  	        // Setting default values for config object
+  	        if (this.config.hoverPreviewEnabled === undefined) {
+  	            this.config.hoverPreviewEnabled = _defaultConfig.hoverPreviewEnabled;
+  	        }
+  	        if (this.config.hoverPreviewArrayCount === undefined) {
+  	            this.config.hoverPreviewArrayCount = _defaultConfig.hoverPreviewArrayCount;
+  	        }
+  	        if (this.config.hoverPreviewFieldCount === undefined) {
+  	            this.config.hoverPreviewFieldCount = _defaultConfig.hoverPreviewFieldCount;
+  	        }
+  	    }
+  	    Object.defineProperty(JSONFormatter.prototype, "isOpen", {
+  	        /*
+  	         * is formatter open?
+  	        */
+  	        get: function () {
+  	            if (this._isOpen !== null) {
+  	                return this._isOpen;
+  	            }
+  	            else {
+  	                return this.open > 0;
+  	            }
+  	        },
+  	        /*
+  	         * set open state (from toggler)
+  	        */
+  	        set: function (value) {
+  	            this._isOpen = value;
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "isDate", {
+  	        /*
+  	         * is this a date string?
+  	        */
+  	        get: function () {
+  	            return (this.type === 'string') &&
+  	                (DATE_STRING_REGEX.test(this.json) ||
+  	                    JSON_DATE_REGEX.test(this.json) ||
+  	                    PARTIAL_DATE_REGEX.test(this.json));
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "isUrl", {
+  	        /*
+  	         * is this a URL string?
+  	        */
+  	        get: function () {
+  	            return this.type === 'string' && (this.json.indexOf('http') === 0);
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "isArray", {
+  	        /*
+  	         * is this an array?
+  	        */
+  	        get: function () {
+  	            return Array.isArray(this.json);
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "isObject", {
+  	        /*
+  	         * is this an object?
+  	         * Note: In this context arrays are object as well
+  	        */
+  	        get: function () {
+  	            return helpers_ts_1.isObject(this.json);
+  	        },
