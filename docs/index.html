@@ -2248,3 +2248,114 @@ except ApiException as e:
   	        get: function () {
   	            return helpers_ts_1.isObject(this.json);
   	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "isEmptyObject", {
+  	        /*
+  	         * is this an empty object with no properties?
+  	        */
+  	        get: function () {
+  	            return !this.keys.length && !this.isArray;
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "isEmpty", {
+  	        /*
+  	         * is this an empty object or array?
+  	        */
+  	        get: function () {
+  	            return this.isEmptyObject || (this.keys && !this.keys.length && this.isArray);
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "hasKey", {
+  	        /*
+  	         * did we receive a key argument?
+  	         * This means that the formatter was called as a sub formatter of a parent formatter
+  	        */
+  	        get: function () {
+  	            return typeof this.key !== 'undefined';
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "constructorName", {
+  	        /*
+  	         * if this is an object, get constructor function name
+  	        */
+  	        get: function () {
+  	            return helpers_ts_1.getObjectName(this.json);
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "type", {
+  	        /*
+  	         * get type of this value
+  	         * Possible values: all JavaScript primitive types plus "array" and "null"
+  	        */
+  	        get: function () {
+  	            return helpers_ts_1.getType(this.json);
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    Object.defineProperty(JSONFormatter.prototype, "keys", {
+  	        /*
+  	         * get object keys
+  	         * If there is an empty key we pad it wit quotes to make it visible
+  	        */
+  	        get: function () {
+  	            if (this.isObject) {
+  	                return Object.keys(this.json).map(function (key) { return key ? key : '""'; });
+  	            }
+  	            else {
+  	                return [];
+  	            }
+  	        },
+  	        enumerable: true,
+  	        configurable: true
+  	    });
+  	    /**
+  	     * Toggles `isOpen` state
+  	     *
+  	    */
+  	    JSONFormatter.prototype.toggleOpen = function () {
+  	        this.isOpen = !this.isOpen;
+  	        if (this.element) {
+  	            if (this.isOpen) {
+  	                this.appendChildren(this.config.animateOpen);
+  	            }
+  	            else {
+  	                this.removeChildren(this.config.animateClose);
+  	            }
+  	            this.element.classList.toggle(helpers_ts_1.cssClass('open'));
+  	        }
+  	    };
+  	    /**
+  	    * Open all children up to a certain depth.
+  	    * Allows actions such as expand all/collapse all
+  	    *
+  	    */
+  	    JSONFormatter.prototype.openAtDepth = function (depth) {
+  	        if (depth === void 0) { depth = 1; }
+  	        if (depth < 0) {
+  	            return;
+  	        }
+  	        this.open = depth;
+  	        this.isOpen = (depth !== 0);
+  	        if (this.element) {
+  	            this.removeChildren(false);
+  	            if (depth === 0) {
+  	                this.element.classList.remove(helpers_ts_1.cssClass('open'));
+  	            }
+  	            else {
+  	                this.appendChildren(this.config.animateOpen);
+  	                this.element.classList.add(helpers_ts_1.cssClass('open'));
+  	            }
+  	        }
+  	    };
+  	    /**
