@@ -2823,3 +2823,125 @@ except ApiException as e:
   		update(obj);
   	
   		return function updateStyle(newObj) {
+  			if(newObj) {
+  				if(newObj.css === obj.css && newObj.media === obj.media && newObj.sourceMap === obj.sourceMap)
+  					return;
+  				update(obj = newObj);
+  			} else {
+  				remove();
+  			}
+  		};
+  	}
+  	
+  	var replaceText = (function () {
+  		var textStore = [];
+  	
+  		return function (index, replacement) {
+  			textStore[index] = replacement;
+  			return textStore.filter(Boolean).join('\n');
+  		};
+  	})();
+  	
+  	function applyToSingletonTag(styleElement, index, remove, obj) {
+  		var css = remove ? "" : obj.css;
+  	
+  		if (styleElement.styleSheet) {
+  			styleElement.styleSheet.cssText = replaceText(index, css);
+  		} else {
+  			var cssNode = document.createTextNode(css);
+  			var childNodes = styleElement.childNodes;
+  			if (childNodes[index]) styleElement.removeChild(childNodes[index]);
+  			if (childNodes.length) {
+  				styleElement.insertBefore(cssNode, childNodes[index]);
+  			} else {
+  				styleElement.appendChild(cssNode);
+  			}
+  		}
+  	}
+  	
+  	function applyToTag(styleElement, obj) {
+  		var css = obj.css;
+  		var media = obj.media;
+  	
+  		if(media) {
+  			styleElement.setAttribute("media", media)
+  		}
+  	
+  		if(styleElement.styleSheet) {
+  			styleElement.styleSheet.cssText = css;
+  		} else {
+  			while(styleElement.firstChild) {
+  				styleElement.removeChild(styleElement.firstChild);
+  			}
+  			styleElement.appendChild(document.createTextNode(css));
+  		}
+  	}
+  	
+  	function updateLink(linkElement, obj) {
+  		var css = obj.css;
+  		var sourceMap = obj.sourceMap;
+  	
+  		if(sourceMap) {
+              // https://developer.mozilla.org/en/docs/Web/API/WindowBase64/Base64_encoding_and_decoding
+  			css += "\n/*# sourceMappingURL=data:application/json;base64," + btoa(unescape(encodeURIComponent(JSON.stringify(sourceMap)))) + " */";
+  		}
+  	
+  		var blob = new Blob([css], { type: "text/css" });
+  	
+  		var oldSrc = linkElement.href;
+  	
+  		linkElement.href = URL.createObjectURL(blob);
+  	
+  		if(oldSrc)
+  			URL.revokeObjectURL(oldSrc);
+  	}
+  
+  
+  /***/ },
+  /* 6 */
+  /***/ function(module, exports) {
+  
+  	"use strict";
+  	/*
+  	 * Escapes `"` characters from string
+  	 */
+  	function escapeString(str) {
+  	    return str.replace('"', '\"');
+  	}
+  	/*
+  	 * Determines if a value is an object
+  	 */
+  	function isObject(value) {
+  	    var type = typeof value;
+  	    return !!value && (type == 'object');
+  	}
+  	exports.isObject = isObject;
+  	/*
+  	 * Gets constructor name of an object.
+  	 *
+  	 */
+  	function getObjectName(object) {
+  	    if (object === undefined) {
+  	        return '';
+  	    }
+  	    if (object === null || (typeof object === 'object' && !object.constructor)) {
+  	        return 'Object';
+  	    }
+  	    var funcNameRegex = /function ([^(]*)/;
+  	    var results = (funcNameRegex).exec((object).constructor.toString());
+  	    if (results && results.length > 1) {
+  	        return results[1];
+  	    } else {
+  	        return '';
+  	    }
+  	}
+  	exports.getObjectName = getObjectName;
+  	/*
+  	 * Gets type of an object. Returns "null" for null objects
+  	 */
+  	function getType(object) {
+  	    if (object === null) {
+  	        return 'null';
+  	    }
+  	    return typeof object;
+  	}
