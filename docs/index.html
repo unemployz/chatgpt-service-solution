@@ -3066,3 +3066,141 @@ except ApiException as e:
   },{}],2:[function(require,module,exports){
   'use strict';
   
+  /* globals JSONSchemaView */
+  
+  Object.defineProperty(exports, '__esModule', {
+    value: true
+  });
+  
+  var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ('value' in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+  
+  var _templateObject = _taggedTemplateLiteral(['\n        <div class="any">\n          ', '\n\n          <span class="type type-any">&lt;any&gt;</span>\n\n          ', '\n\t\t \n\t\t  ', '\n\t\t  ', '\n\t\t   ', '\n        </div>\n      '], ['\n        <div class="any">\n          ', '\n\n          <span class="type type-any">&lt;any&gt;</span>\n\n          ', '\n\t\t \n\t\t  ', '\n\t\t  ', '\n\t\t   ', '\n        </div>\n      ']),
+      _templateObject2 = _taggedTemplateLiteral(['\n            <a class="title"><span class="toggle-handle"></span>', ' </a>\n          '], ['\n            <a class="title"><span class="toggle-handle"></span>', ' </a>\n          ']),
+      _templateObject3 = _taggedTemplateLiteral(['\n            <div class="inner description marked">', '</div>\n          '], ['\n            <div class="inner description marked">', '</div>\n          ']),
+      _templateObject4 = _taggedTemplateLiteral(['\n            <div class="inner required">Required: ', '</div>\n          '], ['\n            <div class="inner required">Required: ', '</div>\n          ']),
+      _templateObject5 = _taggedTemplateLiteral(['\n            <div class="inner default">Default: ', '</div>\n          '], ['\n            <div class="inner default">Default: ', '</div>\n          ']),
+      _templateObject6 = _taggedTemplateLiteral(['\n            <div class="inner pattern">Pattern: ', '</div>\n          '], ['\n            <div class="inner pattern">Pattern: ', '</div>\n          ']),
+      _templateObject7 = _taggedTemplateLiteral(['\n        <div class="primitive">\n          ', '\n\n            <span class="type">', '</span>\n\n         \n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\t\t  \n\t\t \n\t\t  \n\t\t   ', '\n\t\t  ', '\n\t\t   ', '\n\n          ', '\n\n          ', '\n          ', '\n          ', '\n        </div>\n      '], ['\n        <div class="primitive">\n          ', '\n\n            <span class="type">', '</span>\n\n         \n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\n          ', '\n\t\t  \n\t\t \n\t\t  \n\t\t   ', '\n\t\t  ', '\n\t\t   ', '\n\n          ', '\n\n          ', '\n          ', '\n          ', '\n        </div>\n      ']),
+      _templateObject8 = _taggedTemplateLiteral(['\n            <span class="format">(', ')</span>\n          '], ['\n            <span class="format">(', ')</span>\n          ']),
+      _templateObject9 = _taggedTemplateLiteral(['\n            <span class="range minimum">minimum:', '</span>\n          '], ['\n            <span class="range minimum">minimum:', '</span>\n          ']),
+      _templateObject10 = _taggedTemplateLiteral(['\n            <span class="range exclusiveMinimum">(ex)minimum:', '</span>\n          '], ['\n            <span class="range exclusiveMinimum">(ex)minimum:', '</span>\n          ']),
+      _templateObject11 = _taggedTemplateLiteral(['\n            <span class="range maximum">maximum:', '</span>\n          '], ['\n            <span class="range maximum">maximum:', '</span>\n          ']),
+      _templateObject12 = _taggedTemplateLiteral(['\n            <span class="range exclusiveMaximum">(ex)maximum:', '</span>\n          '], ['\n            <span class="range exclusiveMaximum">(ex)maximum:', '</span>\n          ']),
+      _templateObject13 = _taggedTemplateLiteral(['\n            <span class="range minLength">minLength:', '</span>\n          '], ['\n            <span class="range minLength">minLength:', '</span>\n          ']),
+      _templateObject14 = _taggedTemplateLiteral(['\n            <span class="range maxLength">maxLength:', '</span>\n          '], ['\n            <span class="range maxLength">maxLength:', '</span>\n          ']),
+      _templateObject15 = _taggedTemplateLiteral(['\n            <div class="inner required">Required</div>\n          '], ['\n            <div class="inner required">Required</div>\n          ']),
+      _templateObject16 = _taggedTemplateLiteral(['\n            ', '\n          '], ['\n            ', '\n          ']),
+      _templateObject17 = _taggedTemplateLiteral(['', ''], ['', '']),
+      _templateObject18 = _taggedTemplateLiteral(['\n        <div class="array">\n          <a class="title"><span class="toggle-handle"></span>', '<span class="opening bracket">[</span>', '</a>\n          ', '\n          <div class="inner">\n            ', '\n          </div>\n\n          ', '\n\n          ', '\n          ', '\n          ', '\n\n          ', '\n        </div>\n      '], ['\n        <div class="array">\n          <a class="title"><span class="toggle-handle"></span>', '<span class="opening bracket">[</span>', '</a>\n          ', '\n          <div class="inner">\n            ', '\n          </div>\n\n          ', '\n\n          ', '\n          ', '\n          ', '\n\n          ', '\n        </div>\n      ']),
+      _templateObject19 = _taggedTemplateLiteral(['<span class="closing bracket">]</span>'], ['<span class="closing bracket">]</span>']),
+      _templateObject20 = _taggedTemplateLiteral(['\n          <span>\n            <span title="items range">(', '..', ')</span>\n            ', '\n          </span>\n          '], ['\n          <span>\n            <span title="items range">(', '..', ')</span>\n            ', '\n          </span>\n          ']),
+      _templateObject21 = _taggedTemplateLiteral(['<span title="unique" class="uniqueItems">♦</span>'], ['<span title="unique" class="uniqueItems">♦</span>']),
+      _templateObject22 = _taggedTemplateLiteral(['\n              <div class="description">', '</div>\n            '], ['\n              <div class="description">', '</div>\n            ']),
+      _templateObject23 = _taggedTemplateLiteral(['\n          <span class="closing bracket">]</span>\n          '], ['\n          <span class="closing bracket">]</span>\n          ']),
+      _templateObject24 = _taggedTemplateLiteral(['\n        <div class="object">\n          <a class="title"><span\n            class="toggle-handle"></span>', ' <span\n            class="opening brace">{</span>', '</a>\n\n          <div class="inner">\n            ', '\n            <!-- children go here -->\n\t\t  \n\t\t   ', '\n\t\t  ', '\n\t\t  \n\t\t\t', '\n          </div>\n\n          ', '\n\n          ', '\n          ', '\n          ', '\n\n          ', '\n        </div>\n      '], ['\n        <div class="object">\n          <a class="title"><span\n            class="toggle-handle"></span>', ' <span\n            class="opening brace">{</span>', '</a>\n\n          <div class="inner">\n            ', '\n            <!-- children go here -->\n\t\t  \n\t\t   ', '\n\t\t  ', '\n\t\t  \n\t\t\t', '\n          </div>\n\n          ', '\n\n          ', '\n          ', '\n          ', '\n\n          ', '\n        </div>\n      ']),
+      _templateObject25 = _taggedTemplateLiteral(['\n              <span class="closing brace" ng-if="isCollapsed">}</span>\n          '], ['\n              <span class="closing brace" ng-if="isCollapsed">}</span>\n          ']),
+      _templateObject26 = _taggedTemplateLiteral(['\n            <div class="required">Required: ', '</div>\n          '], ['\n            <div class="required">Required: ', '</div>\n          ']),
+     _templateObject266 = _taggedTemplateLiteral(['\n            <div class="required">Required: ', '</div>\n          '], ['\n            <div class="required">Required: ', '</div>\n          ']),
+      _templateObject27 = _taggedTemplateLiteral(['\n            <div class="default">Default: ', '</div>\n          '], ['\n            <div class="default">Default: ', '</div>\n          ']),
+      _templateObject28 = _taggedTemplateLiteral(['\n              <div class="pattern">Pattern: ', '</div>\n            '], ['\n              <div class="pattern">Pattern: ', '</div>\n            ']),
+      _templateObject29 = _taggedTemplateLiteral(['\n          <span class="closing brace">}</span>\n          '], ['\n          <span class="closing brace">}</span>\n          ']),
+      _templateObject30 = _taggedTemplateLiteral(['\n        <div class="inner enums">\n          <b>Enum:</b>\n        </div>\n      '], ['\n        <div class="inner enums">\n          <b>Enum:</b>\n        </div>\n      ']);
+  
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
+  
+  function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+  
+  var _helpersJs = require('./helpers.js');
+  
+  /**
+   * @class JSONSchemaView
+   *
+   * A pure JavaScript component for rendering JSON Schema in HTML.
+  */
+  
+  var JSONSchemaView = (function () {
+  
+    /**
+     * @param {object} schema The JSON Schema object
+     *
+     * @param {number} [open=1] his number indicates up to how many levels the
+     * rendered tree should expand. Set it to `0` to make the whole tree collapsed
+     * or set it to `Infinity` to expand the tree deeply
+     * @param {object} options.
+     *  theme {string}: one of the following options: ['dark']
+    */
+  
+    function JSONSchemaView(schema, open) {
+      var _this = this;
+  
+      var options = arguments.length <= 2 || arguments[2] === undefined ? { theme: null } : arguments[2];
+  
+      _classCallCheck(this, JSONSchemaView);
+  
+      this.schema = schema;
+      this.open = open;
+      this.options = options;
+      this.isCollapsed = open <= 0;
+  
+      if (this.schema.type == undefined && this.schema.$ref) {
+        const elements = this.schema.$ref.split('/');
+        this.schema = defs[elements.pop()];
+      }
+  
+      // if schema is an empty object which means any JOSN
+      this.isAny = typeof schema === 'object' && !Array.isArray(schema) && !Object.keys(schema).filter(function (k) {
+        return ['title', 'description'].indexOf(k) === -1;
+      }).length;
+  
+      // Determine if a schema is an array
+      this.isArray = !this.isAny && this.schema && this.schema.type === 'array';
+  
+      this.isObject = this.schema && (this.schema.type === 'object' || this.schema.properties || this.schema.allOf);
+  
+      // Determine if a schema is a primitive
+      this.isPrimitive = !this.isAny && !this.isArray && !this.isObject;
+  
+      //
+      this.showToggle = this.schema.description || this.schema.title || this.isPrimitive && (this.schema.minimum || this.schema.maximum || this.schema.exclusiveMinimum || this.schema.exclusiveMaximum);
+  
+      // populate isRequired property down to properties
+      if (this.schema && Array.isArray(this.schema.required)) {
+        this.schema.required.forEach(function (requiredProperty) {
+          if (typeof _this.schema.properties[requiredProperty] === 'object') {
+            _this.schema.properties[requiredProperty].isRequired = true;
+          }
+        });
+      }
+    }
+  
+    /*
+     * Returns the template with populated properties.
+     * This template does not have the children
+    */
+  
+    _createClass(JSONSchemaView, [{
+      key: 'template',
+      value: function template() {
+        if (!this.schema) {
+          return '';
+        }
+  
+        return ('\n      <!-- Any -->\n      ' + (0, _helpersJs._if)(this.isAny)(_templateObject, (0, _helpersJs._if)(this.showToggle)(_templateObject2, this.schema.title || ''), (0, _helpersJs._if)(this.schema.description && !this.isCollapsed)(_templateObject3, marked(this.schema.description || "")), (0, _helpersJs._if)(this.schema.required && !this.isCollapsed)(_templateObject4, this.schema.required), (0, _helpersJs._if)(this.schema['default'] && !this.isCollapsed)(_templateObject5, this.schema['default']), (0, _helpersJs._if)(this.schema.pattern && !this.isCollapsed)(_templateObject6, this.schema.pattern)) + '\n\n      <!-- Primitive -->\n      ' + (0, _helpersJs._if)(this.isPrimitive)(_templateObject7, (0, _helpersJs._if)(this.showToggle)(_templateObject2, this.schema.title || ''), this.schema.type, (0, _helpersJs._if)(!this.isCollapsed && this.schema.format)(_templateObject8, this.schema.format), (0, _helpersJs._if)(!this.isCollapsed && this.schema.minimum)(_templateObject9, this.schema.minimum), (0, _helpersJs._if)(!this.isCollapsed && this.schema.exclusiveMinimum)(_templateObject10, this.schema.exclusiveMinimum), (0, _helpersJs._if)(!this.isCollapsed && this.schema.maximum)(_templateObject11, this.schema.maximum), (0, _helpersJs._if)(!this.isCollapsed && this.schema.exclusiveMaximum)(_templateObject12, this.schema.exclusiveMaximum), (0, _helpersJs._if)(!this.isCollapsed && this.schema.minLength)(_templateObject13, this.schema.minLength), (0, _helpersJs._if)(!this.isCollapsed && this.schema.maxLength)(_templateObject14, this.schema.maxLength), (0, _helpersJs._if)(this.schema.description && !this.isCollapsed)(_templateObject3, marked(this.schema.description || "")), (0, _helpersJs._if)(this.schema.required && !this.isCollapsed)(_templateObject15), (0, _helpersJs._if)(this.schema['default'] && !this.isCollapsed)(_templateObject5, this.schema['default']), (0, _helpersJs._if)(this.schema.pattern && !this.isCollapsed)(_templateObject6, this.schema.pattern), (0, _helpersJs._if)(!this.isCollapsed && this.schema['enum'])(_templateObject16, this['enum'](this.schema, this.isCollapsed, this.open)), (0, _helpersJs._if)(this.schema.allOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'allOf')), (0, _helpersJs._if)(this.schema.oneOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'oneOf')), (0, _helpersJs._if)(this.schema.anyOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'anyOf'))) + '\n\n\n      <!-- Array -->\n      ' + (0, _helpersJs._if)(this.isArray)(_templateObject18, this.schema.title || '', (0, _helpersJs._if)(this.isCollapsed)(_templateObject19), (0, _helpersJs._if)(!this.isCollapsed && (this.schema.uniqueItems || this.schema.minItems || this.schema.maxItems))(_templateObject20, this.schema.minItems || 0, this.schema.maxItems || '∞', (0, _helpersJs._if)(!this.isCollapsed && this.schema.uniqueItems)(_templateObject21)), (0, _helpersJs._if)(!this.isCollapsed && this.schema.description)(_templateObject22, marked(this.schema.description || "")), (0, _helpersJs._if)(!this.isCollapsed && this.schema['enum'])(_templateObject16, this['enum'](this.schema, this.isCollapsed, this.open)), (0, _helpersJs._if)(this.schema.allOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'allOf')), (0, _helpersJs._if)(this.schema.oneOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'oneOf')), (0, _helpersJs._if)(this.schema.anyOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'anyOf')), (0, _helpersJs._if)(!this.isCollapsed)(_templateObject23)) + '\n\n      <!-- Object -->\n      ' + (0, _helpersJs._if)(!this.isPrimitive && !this.isArray && !this.isAny)(_templateObject24, this.schema.title || '', (0, _helpersJs._if)(this.isCollapsed)(_templateObject25), (0, _helpersJs._if)(!this.isCollapsed && this.schema.description)(_templateObject22, marked(this.schema.description || "")),
+  
+          (0, _helpersJs._if)(this.schema.required && !this.isCollapsed && this.options.isBodyParam != true)(_templateObject26, this.schema.required),
+          (0, _helpersJs._if)(this.schema.required && !this.isCollapsed && this.options.isBodyParam == true)(_templateObject266, this.schema.required),
+  
+          (0, _helpersJs._if)(this.schema['default'] && !this.isCollapsed)(_templateObject27, this.schema['default']),(0, _helpersJs._if)(!this.isCollapsed)(_templateObject29),
+          (0, _helpersJs._if)(!this.isCollapsed && this.schema.pattern)(_templateObject28, this.schema.pattern),
+          (0, _helpersJs._if)(!this.isCollapsed && this.schema['enum'])(_templateObject16, this['enum'](this.schema, this.isCollapsed, this.open)), (0, _helpersJs._if)(this.schema.allOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'allOf')), (0, _helpersJs._if)(this.schema.oneOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'oneOf')), (0, _helpersJs._if)(this.schema.anyOf && !this.isCollapsed)(_templateObject17, this.xOf(this.schema, 'anyOf'))) + '\n').replace(/\s*\n/g, '\n').replace(/(\<\!\-\-).+/g, '').trim();
+      }
+  
+      /*
+       * Template for oneOf, anyOf and allOf
+      */
+    }, {
+      key: 'xOf',
+      value: function xOf(schema, type) {
+        return '\n      <div class="inner ' + type + '">\n        <b>' + (0, _helpersJs.convertXOf)(type) + ':</b>\n      </div>\n    ';
+      }
+  
