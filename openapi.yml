@@ -6,4 +6,8 @@ paths:
   /api/history:
     get:
       summary: Fetch a list of sessions
-      descri
+      description: Returns an array of session objects
+      responses:
+        '200':
+          description: Successful response
+      
