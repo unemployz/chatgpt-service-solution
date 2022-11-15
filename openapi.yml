@@ -15,4 +15,8 @@ paths:
               schema:
                 type: array
                 items:
-    
+                  type: object
+                  properties:
+                    _id:
+                      type: string
+                      description: Uniqu
