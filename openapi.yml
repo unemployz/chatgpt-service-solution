@@ -22,4 +22,7 @@ paths:
                       description: Unique identifier for the session
                     title:
                       type: string
-                      descript
+                      description: Title of the session
+  /api/history/{id}:
+    get:
+      summary: Fetch conversation history for a particula
