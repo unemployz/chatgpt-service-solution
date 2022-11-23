@@ -25,4 +25,9 @@ paths:
                       description: Title of the session
   /api/history/{id}:
     get:
-      summary: Fetch conversation history for a particula
+      summary: Fetch conversation history for a particular session
+      description: Returns a session object
+      parameters:
+        - in: path
+          name: id
+          descri
