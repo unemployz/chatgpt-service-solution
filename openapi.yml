@@ -34,4 +34,8 @@ paths:
           required: true
           schema:
             type: string
-  
+      responses:
+        '200':
+          description: Successful response
+          content:
+         
