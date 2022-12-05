@@ -49,4 +49,7 @@ paths:
                       properties:
                         input:
                           type: string
-                          description: In
+                          description: Input text
+                        output:
+                          type: string
+                          descriptio
