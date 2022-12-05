@@ -42,4 +42,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  hist
+                  history:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+  
