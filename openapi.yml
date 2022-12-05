@@ -47,4 +47,6 @@ paths:
                     items:
                       type: object
                       properties:
-  
+                        input:
+                          type: string
+                          description: In
