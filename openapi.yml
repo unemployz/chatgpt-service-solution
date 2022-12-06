@@ -52,4 +52,7 @@ paths:
                           description: Input text
                         output:
                           type: string
-                          descriptio
+                          description: Output text
+                        timestamp:
+                          type: integer
+                          des
