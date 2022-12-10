@@ -55,4 +55,8 @@ paths:
                           description: Output text
                         timestamp:
                           type: integer
-                          des
+                          description: Timestamp of the conversation
+  /api/chat:
+    post:
+      summary: Send a message
+      description: Accepts a m
