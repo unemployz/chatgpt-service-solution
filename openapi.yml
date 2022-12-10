@@ -59,4 +59,10 @@ paths:
   /api/chat:
     post:
       summary: Send a message
-      description: Accepts a m
+      description: Accepts a message object
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+          
