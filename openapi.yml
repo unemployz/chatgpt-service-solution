@@ -69,4 +69,10 @@ paths:
               properties:
                 message:
                   type: string
-                  description: Input messag
+                  description: Input message
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+    
