@@ -83,4 +83,7 @@ paths:
                     description: Output response
                   title:
                     type: string
-             
+                    description: chat session title
+                  sessionId:
+                    type: string
+        
