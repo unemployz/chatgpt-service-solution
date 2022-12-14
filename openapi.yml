@@ -79,4 +79,8 @@ paths:
                 type: object
                 properties:
                   response:
-               
+                    type: string
+                    description: Output response
+                  title:
+                    type: string
+             
