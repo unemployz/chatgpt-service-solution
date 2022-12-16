@@ -89,4 +89,9 @@ paths:
                     description: Unique identifier for the session
   /api/chat/{id}:
     post:
-      summary: Send a message in an existing se
+      summary: Send a message in an existing session
+      description: Accepts a message object
+      parameters:
+        - in: path
+          name: id
+          descri
