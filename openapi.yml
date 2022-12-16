@@ -86,4 +86,7 @@ paths:
                     description: chat session title
                   sessionId:
                     type: string
-        
+                    description: Unique identifier for the session
+  /api/chat/{id}:
+    post:
+      summary: Send a message in an existing se
