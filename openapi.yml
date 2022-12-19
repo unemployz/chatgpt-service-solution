@@ -94,4 +94,8 @@ paths:
       parameters:
         - in: path
           name: id
-          descri
+          description: Unique identifier for the session
+          required: true
+          schema:
+            type: string
+      
