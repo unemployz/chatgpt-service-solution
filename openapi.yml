@@ -108,4 +108,9 @@ paths:
                 message:
                   type: string
                   description: Input message
-    
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+        
