@@ -103,4 +103,9 @@ paths:
         content:
           application/json:
             schema:
-              ty
+              type: object
+              properties:
+                message:
+                  type: string
+                  description: Input message
+    
