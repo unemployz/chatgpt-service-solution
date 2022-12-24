@@ -113,4 +113,8 @@ paths:
           description: Successful response
           content:
             application/json:
-        
+              schema:
+                type: object
+                properties:
+                  response:
+                    ty
