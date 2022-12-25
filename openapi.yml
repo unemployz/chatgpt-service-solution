@@ -117,4 +117,5 @@ paths:
                 type: object
                 properties:
                   response:
-                    ty
+                    type: string
+                    description: Output response
