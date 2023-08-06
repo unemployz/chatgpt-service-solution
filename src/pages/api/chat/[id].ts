@@ -12,4 +12,5 @@ export default async function handler(
             error: "Method not allowed"
         });
     }
-    const
+    const { message, userId } = JSON.parse(req.body) as { message: string, userId: string};
+    const { id } = req.query as { id: st
