@@ -13,4 +13,7 @@ export default async function handler(
         });
     }
     const { message, userId } = JSON.parse(req.body) as { message: string, userId: string};
-    const { id } = req.query as { id: st
+    const { id } = req.query as { id: string};
+    var doc = await getDocumentFromCollectionById("chat", id, userId);
+    if (!doc) {
+        return res.status(404).js
