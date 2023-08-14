@@ -16,4 +16,8 @@ export default async function handler(
     const { id } = req.query as { id: string};
     var doc = await getDocumentFromCollectionById("chat", id, userId);
     if (!doc) {
-        return res.status(404).js
+        return res.status(404).json({
+            error: "No conversation found with id: " + id
+        });
+    }
+    let { userLabel, chatGPTLab
