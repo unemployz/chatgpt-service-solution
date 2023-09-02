@@ -20,4 +20,6 @@ export default async function handler(
             error: "No conversation found with id: " + id
         });
     }
-    let { userLabel, chatGPTLab
+    let { userLabel, chatGPTLabel, endToken, startPrompt, history } = doc;
+
+    let prompt = formatOpenAIInput(startPrompt, history, endToken, userLabel, 
