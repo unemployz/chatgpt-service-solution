@@ -22,4 +22,7 @@ export default async function handler(
     }
     let { userLabel, chatGPTLabel, endToken, startPrompt, history } = doc;
 
-    let prompt = formatOpenAIInput(startPrompt, history, endToken, userLabel, 
+    let prompt = formatOpenAIInput(startPrompt, history, endToken, userLabel, chatGPTLabel);
+    let question = message;
+    prompt += "\n" + userLabel + question + "\n" + chatGPTLabel;
+    let o
