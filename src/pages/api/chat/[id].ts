@@ -25,4 +25,9 @@ export default async function handler(
     let prompt = formatOpenAIInput(startPrompt, history, endToken, userLabel, chatGPTLabel);
     let question = message;
     prompt += "\n" + userLabel + question + "\n" + chatGPTLabel;
-    let o
+    let op = await queryLanguageModel(prompt);
+
+    doc.history.push({
+        "input": question,
+        "output": op,
+        "timestamp": new
