@@ -46,4 +46,7 @@ async function updateDocumentInCollection(collectionName: string, id: string, hi
         await client.connect();
         const db = client.db(process.env.MONGO_DB);
         const collection = await db.collection(collectionName);
-        const query = { _id: 
+        const query = { _id: ObjectId.createFromHexString(id) };
+        const updateDoc = {
+            $set: {
+                history
