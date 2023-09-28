@@ -40,4 +40,8 @@ export default async function handler(
     });
 }
 
-async function updateDocumentInCollection(collectionName: string, id: string, history: any[], us
+async function updateDocumentInCollection(collectionName: string, id: string, history: any[], userId: string) {
+    const client = new MongoClient(process.env.MONGO_URL || '');
+    try {
+        await client.connect();
+        const db = c
