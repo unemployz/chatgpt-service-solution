@@ -54,4 +54,9 @@ async function updateDocumentInCollection(collectionName: string, id: string, hi
             }
         };
         const result = await collection.updateOne(query, updateDoc);
-  
+        return result.modifiedCount;
+    } catch (e) {
+        console.error(e);
+    } finally {
+        await client.close();
+    
