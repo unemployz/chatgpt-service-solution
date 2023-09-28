@@ -49,4 +49,9 @@ async function updateDocumentInCollection(collectionName: string, id: string, hi
         const query = { _id: ObjectId.createFromHexString(id) };
         const updateDoc = {
             $set: {
-                history
+                history: history,
+                userId: userId
+            }
+        };
+        const result = await collection.updateOne(query, updateDoc);
+  
