@@ -59,4 +59,6 @@ async function updateDocumentInCollection(collectionName: string, id: string, hi
         console.error(e);
     } finally {
         await client.close();
-    
+    }
+    return null;
+}
