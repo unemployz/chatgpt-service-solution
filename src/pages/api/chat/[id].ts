@@ -35,4 +35,9 @@ export default async function handler(
 
     const done = await updateDocumentInCollection("chat", id, doc.history, userId);
 
-    return res.status(
+    return res.status(200).json({
+        response: op
+    });
+}
+
+async function updateDocumentInCollection(collectionName: string, id: string, history: any[], us
