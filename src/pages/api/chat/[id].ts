@@ -30,4 +30,9 @@ export default async function handler(
     doc.history.push({
         "input": question,
         "output": op,
-        "timestamp": new
+        "timestamp": new Date().getTime()
+    });
+
+    const done = await updateDocumentInCollection("chat", id, doc.history, userId);
+
+    return res.status(
