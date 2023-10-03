@@ -10,4 +10,8 @@ let userLabel = "User: ";
 let chatGPTLabel = "ChatGPT: ";
 
 export default async function handler(
-    req: Next
+    req: NextApiRequest,
+    res: NextApiResponse<any>
+) {
+    if (req.method !== 'POST') {
+        return res.status(405).
