@@ -3,4 +3,6 @@ import { MongoClient, Db } from 'mongodb';
 const {encode, decode} = require('gpt-3-encoder')
 const { Configuration, OpenAIApi } = require("openai");
 
-export const end
+export const endToken = "<|im_end|>\n\n\n";
+export const temperature = 0.5;
+export const engine = process.env.OPEN_AI_MODEL || "gpt-3.5-tu
