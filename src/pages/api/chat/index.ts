@@ -5,4 +5,9 @@ const { Configuration, OpenAIApi } = require("openai");
 
 export const endToken = "<|im_end|>\n\n\n";
 export const temperature = 0.5;
-export const engine = process.env.OPEN_AI_MODEL || "gpt-3.5-tu
+export const engine = process.env.OPEN_AI_MODEL || "gpt-3.5-turbo";
+let userLabel = "User: ";
+let chatGPTLabel = "ChatGPT: ";
+
+export default async function handler(
+    req: Next
