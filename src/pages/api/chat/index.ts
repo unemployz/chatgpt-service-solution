@@ -18,4 +18,6 @@ export default async function handler(
             error: "Method not allowed"
         });
     }
-    const { message, userId } = JSON.parse(r
+    const { message, userId } = JSON.parse(req.body);
+    let currentDate = new Date().toISOString().split('T')[0];
+    let startPrompt = "You are ChatGPT, a large language model trained by 
