@@ -20,4 +20,4 @@ export default async function handler(
     }
     const { message, userId } = JSON.parse(req.body);
     let currentDate = new Date().toISOString().split('T')[0];
-    let startPrompt = "You are ChatGPT, a large language model trained by 
+    let startPrompt = "You are ChatGPT, a large language model trained by OpenAI. Respond conversationally. Do not answer as the user. Knowledge cutoff: 2021-09 Current date: " + currentDate + "."
