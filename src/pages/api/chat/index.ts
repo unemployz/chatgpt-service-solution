@@ -26,4 +26,11 @@ export default async function handler(
     var initHistory = [
         {
             "input": "Hi, ChatGPT!",
-            "output": "Hi! 
+            "output": "Hi! How can I help you today?",
+            "timestamp": new Date().getTime()
+        }
+    ]
+    
+    var question = message;
+    
+ 
