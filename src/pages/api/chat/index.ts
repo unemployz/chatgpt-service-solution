@@ -35,4 +35,10 @@ export default async function handler(
     
     let prompt = formatOpenAIInput(startPrompt, initHistory, endToken, userLabel, chatGPTLabel);
     
-    prompt += "\n" + userLabel + 
+    prompt += "\n" + userLabel + question + "\n" + chatGPTLabel;
+    
+
+    let op = await queryLanguageModel(prompt);
+
+    initHistory.push({
+        "input": quest
