@@ -33,4 +33,6 @@ export default async function handler(
     
     var question = message;
     
- 
+    let prompt = formatOpenAIInput(startPrompt, initHistory, endToken, userLabel, chatGPTLabel);
+    
+    prompt += "\n" + userLabel + 
