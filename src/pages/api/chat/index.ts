@@ -41,4 +41,8 @@ export default async function handler(
     let op = await queryLanguageModel(prompt);
 
     initHistory.push({
-        "input": quest
+        "input": question,
+        "output": op,
+        "timestamp": new Date().getTime()
+    });
+    prompt = formatOpenAIInput(startPrompt, 
