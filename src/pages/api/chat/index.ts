@@ -45,4 +45,7 @@ export default async function handler(
         "output": op,
         "timestamp": new Date().getTime()
     });
-    prompt = formatOpenAIInput(startPrompt, 
+    prompt = formatOpenAIInput(startPrompt, initHistory, endToken, userLabel, chatGPTLabel);
+    var title = await generateConversationTitle(prompt);
+    var doc = {
+ 
