@@ -48,4 +48,10 @@ export default async function handler(
     prompt = formatOpenAIInput(startPrompt, initHistory, endToken, userLabel, chatGPTLabel);
     var title = await generateConversationTitle(prompt);
     var doc = {
- 
+        userId,
+        startPrompt,
+        userLabel,
+        chatGPTLabel,
+        title,
+        endToken,
+        temp
