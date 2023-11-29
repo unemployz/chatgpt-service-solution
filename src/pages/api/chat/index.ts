@@ -59,4 +59,12 @@ export default async function handler(
         history: initHistory,
         ts:  new Date().getTime()
     };
-    var sessionId = await initializeCon
+    var sessionId = await initializeConversation("chat", doc);
+    res.status(200).json({
+        sessionId,
+        title,
+        response: op
+    });
+}
+
+async
