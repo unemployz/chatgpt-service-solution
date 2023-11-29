@@ -54,4 +54,9 @@ export default async function handler(
         chatGPTLabel,
         title,
         endToken,
-        temp
+        temperature,
+        engine,
+        history: initHistory,
+        ts:  new Date().getTime()
+    };
+    var sessionId = await initializeCon
