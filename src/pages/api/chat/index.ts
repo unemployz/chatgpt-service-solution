@@ -67,4 +67,5 @@ export default async function handler(
     });
 }
 
-async
+async function generateConversationTitle(prompt: string) {
+    const titleGenPrompt = prompt + "\n" + userLabel + "For the above conversation, generate
