@@ -68,4 +68,5 @@ export default async function handler(
 }
 
 async function generateConversationTitle(prompt: string) {
-    const titleGenPrompt = prompt + "\n" + userLabel + "For the above conversation, generate
+    const titleGenPrompt = prompt + "\n" + userLabel + "For the above conversation, generate a very short, consise title that would summarize the dialoge." + "\n" + chatGPTLabel;
+    const title = await queryLangu
