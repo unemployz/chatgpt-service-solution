@@ -74,4 +74,7 @@ async function generateConversationTitle(prompt: string) {
 }
 
 export async function queryLanguageModel(prompt: string) {
-    let 
+    let encodedPrompt = encode(prompt);
+    let maxTokens = (4000 - encodedPrompt.length);
+    const configuration = new Configuration({
+  
