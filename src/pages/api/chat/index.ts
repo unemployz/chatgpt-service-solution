@@ -77,4 +77,8 @@ export async function queryLanguageModel(prompt: string) {
     let encodedPrompt = encode(prompt);
     let maxTokens = (4000 - encodedPrompt.length);
     const configuration = new Configuration({
-  
+        apiKey: process.env.OPEN_AI_KEY,
+    });
+    const openai = new OpenAIApi(configuration);
+    try {
+        const completion = await openai
