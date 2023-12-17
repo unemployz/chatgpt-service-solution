@@ -85,4 +85,7 @@ export async function queryLanguageModel(prompt: string) {
             model: engine,
             prompt: prompt,
             max_tokens: maxTokens,
-          
+            temperature: temperature,
+            stop: "\n\n\n"
+        });
+        const opp = completion.data.choices[0].text.replace(/<\|i
