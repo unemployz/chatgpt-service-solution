@@ -81,4 +81,8 @@ export async function queryLanguageModel(prompt: string) {
     });
     const openai = new OpenAIApi(configuration);
     try {
-        const completion = await openai
+        const completion = await openai.createCompletion({
+            model: engine,
+            prompt: prompt,
+            max_tokens: maxTokens,
+          
