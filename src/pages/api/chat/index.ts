@@ -88,4 +88,8 @@ export async function queryLanguageModel(prompt: string) {
             temperature: temperature,
             stop: "\n\n\n"
         });
-        const opp = completion.data.choices[0].text.replace(/<\|i
+        const opp = completion.data.choices[0].text.replace(/<\|im_end\|>$/, '');
+    
+        return opp;
+    } catch (error: any) {
+        return "An error occurred while querying th
