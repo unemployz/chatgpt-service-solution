@@ -93,4 +93,7 @@ export async function queryLanguageModel(prompt: string) {
         return opp;
     } catch (error: any) {
         return "An error occurred while querying the language model. Please try again later. Error Code: " + error.response.status + " " + error.response.data.error.message;
-  
+    }
+}
+
+export function formatOpenAIInput(initPrompt: string, history: any[], endToken: string, userLabel: string, chatGPTLabel
