@@ -96,4 +96,7 @@ export async function queryLanguageModel(prompt: string) {
     }
 }
 
-export function formatOpenAIInput(initPrompt: string, history: any[], endToken: string, userLabel: string, chatGPTLabel
+export function formatOpenAIInput(initPrompt: string, history: any[], endToken: string, userLabel: string, chatGPTLabel: string) {
+    let prompt = initPrompt + "\n";
+    history.forEach((conv: { input: any; output: any; timestamp: any;}) => {
+        promp
