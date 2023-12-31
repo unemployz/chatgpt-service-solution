@@ -101,4 +101,11 @@ export function formatOpenAIInput(initPrompt: string, history: any[], endToken: 
     history.forEach((conv: { input: any; output: any; timestamp: any;}) => {
         prompt += "\n" + userLabel + conv.input + "\n" + chatGPTLabel + conv.output + "\n" + endToken;
     });
-    return prom
+    return prompt;
+}
+
+async function initializeConversation(
+    collectionName: string,
+    documentData: any
+) {
+    con
