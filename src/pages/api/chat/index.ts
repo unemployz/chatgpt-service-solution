@@ -111,4 +111,6 @@ async function initializeConversation(
     const client = new MongoClient(process.env.MONGO_URL || '');
     try {
         await client.connect();
-        const db =
+        const db = client.db(process.env.MONGO_DB);
+        const collection = await db.collection(collectionName);
+        const result = await 
