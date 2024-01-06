@@ -117,4 +117,8 @@ async function initializeConversation(
         return result.insertedId;
     } catch (error) {
         console.error(error);
-  
+    } finally {
+        client.close();
+    }
+    return null;
+}
