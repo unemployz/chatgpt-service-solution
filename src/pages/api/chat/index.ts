@@ -108,4 +108,7 @@ async function initializeConversation(
     collectionName: string,
     documentData: any
 ) {
-    con
+    const client = new MongoClient(process.env.MONGO_URL || '');
+    try {
+        await client.connect();
+        const db =
