@@ -113,4 +113,8 @@ async function initializeConversation(
         await client.connect();
         const db = client.db(process.env.MONGO_DB);
         const collection = await db.collection(collectionName);
-        const result = await 
+        const result = await collection.insertOne(documentData);
+        return result.insertedId;
+    } catch (error) {
+        console.error(error);
+  
