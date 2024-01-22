@@ -5,4 +5,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) {
-    const { id, userId }
+    const { id, userId } = req.query;
+    const collection = await getDocumentFromCollectionById("chat", id, userId);
+    if (!collection) {
+ 
