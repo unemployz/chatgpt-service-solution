@@ -8,4 +8,9 @@ export default async function handler(
     const { id, userId } = req.query;
     const collection = await getDocumentFromCollectionById("chat", id, userId);
     if (!collection) {
- 
+        return res.status(200).json({
+            history: []
+        });
+    }
+    collection.history.shift();
+    collecti
