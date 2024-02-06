@@ -13,4 +13,7 @@ export default async function handler(
         });
     }
     collection.history.shift();
-    collecti
+    collection.history.forEach((hs: any) => {
+        hs.output = hs.output.replace(/<\|im_end\|>$/, '');
+    });
+    return res.status(200).
