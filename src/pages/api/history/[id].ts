@@ -16,4 +16,10 @@ export default async function handler(
     collection.history.forEach((hs: any) => {
         hs.output = hs.output.replace(/<\|im_end\|>$/, '');
     });
-    return res.status(200).
+    return res.status(200).json({
+        history: collection.history
+    });
+}
+
+export async function getDocumentFromCollectionById(
+    collectionName: 
