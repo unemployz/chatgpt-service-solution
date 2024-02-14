@@ -22,4 +22,8 @@ export default async function handler(
 }
 
 export async function getDocumentFromCollectionById(
-    collectionName: 
+    collectionName: string,
+    id: any,
+    userId: any
+) {
+    const client = new MongoClient(process.env.MONGO_URL || '');
