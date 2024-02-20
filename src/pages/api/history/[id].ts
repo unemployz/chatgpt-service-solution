@@ -27,3 +27,8 @@ export async function getDocumentFromCollectionById(
     userId: any
 ) {
     const client = new MongoClient(process.env.MONGO_URL || '');
+    try {
+
+        await client.connect();
+        const db = client.db(process.env.MONGO_DB);
+        const collection = db.
