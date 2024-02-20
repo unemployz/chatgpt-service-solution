@@ -31,4 +31,6 @@ export async function getDocumentFromCollectionById(
 
         await client.connect();
         const db = client.db(process.env.MONGO_DB);
-        const collection = db.
+        const collection = db.collection(collectionName);
+        
+        const query = { _id: ObjectId.createFromHexString(id), userId: user
