@@ -39,4 +39,7 @@ export async function getDocumentFromCollectionById(
     } catch (e) {
         console.error(e);
     } finally {
-        await
+        await client.close();
+    }
+    return null;
+}
