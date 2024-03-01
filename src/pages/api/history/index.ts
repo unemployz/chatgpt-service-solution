@@ -5,4 +5,6 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<any>
 ) {
-    const { userId } =
+    const { userId } = req.query as { userId: string };
+    const sessionList = await fetchRecentDocuments("chat", userId);
+    return res.s
