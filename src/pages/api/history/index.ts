@@ -7,4 +7,8 @@ export default async function handler(
 ) {
     const { userId } = req.query as { userId: string };
     const sessionList = await fetchRecentDocuments("chat", userId);
-    return res.s
+    return res.status(200).json(sessionList);
+}
+
+async function fetchRecentDocuments(collectionName: string, userId: string) {
+  const 
