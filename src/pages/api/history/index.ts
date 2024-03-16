@@ -19,3 +19,7 @@ async function fetchRecentDocuments(collectionName: string, userId: string) {
     const cursor = collection
       .find({
         userId: userId,
+      }, { projection: { _id: 1, title: 1 } })
+      .sort({ ts: -1 })
+      .limit(100);
+    const recentDocuments = a
