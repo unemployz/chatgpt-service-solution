@@ -14,4 +14,8 @@ async function fetchRecentDocuments(collectionName: string, userId: string) {
   const client = new MongoClient(process.env.MONGO_URL || '');
   try {
     await client.connect();
-    const db = client.db(process.e
+    const db = client.db(process.env.MONGO_DB);
+    const collection = db.collection(collectionName);
+    const cursor = collection
+      .find({
+        userId: userId,
