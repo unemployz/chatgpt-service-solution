@@ -22,4 +22,9 @@ async function fetchRecentDocuments(collectionName: string, userId: string) {
       }, { projection: { _id: 1, title: 1 } })
       .sort({ ts: -1 })
       .limit(100);
-    const recentDocuments = a
+    const recentDocuments = await cursor.toArray();
+    return recentDocuments;
+  } catch (error) {
+    console.error(error);
+  } finally {
+    client.close();
