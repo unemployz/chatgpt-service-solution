@@ -28,3 +28,6 @@ async function fetchRecentDocuments(collectionName: string, userId: string) {
     console.error(error);
   } finally {
     client.close();
+  }
+  return [];
+}
